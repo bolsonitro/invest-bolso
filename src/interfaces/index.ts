@@ -5,7 +5,7 @@ export interface Ifinance {
   };
 }
 
-export interface IBolsonaro {
+export interface Iftx {
     sucess: any,
     result: any
 }
