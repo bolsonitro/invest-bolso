@@ -6,6 +6,6 @@ export interface Ifinance {
 }
 
 export interface Iftx {
-    sucess: any,
-    result: any
+  sucess: any;
+  result: any;
 }
