@@ -8,6 +8,11 @@ require("dotenv").config();
 
 const app = express();
 
+const [PUBLIC_API_KEY, PRIVATE_API_KEY] = [
+  process.env.PUBLIC_API_KEY,
+  process.env.PRIVATE_API_KEY,
+];
+
 app.use(cors({ origin: "*" }));
 
 app.get("/", (req, res) => {
@@ -65,11 +70,11 @@ app.get("/brz", (req: Request, res: Response) => {
 });
 
 app.get("/position", async (req: Request, res: Response) => {
-  if (!process.env.PUBLIC_API_KEY)
+  if (PUBLIC_API_KEY == undefined)
     return res.status(500).json({ message: "Missing API Key in Env" });
   const client = new RestClient(
-    process.env.PUBLIC_API_KEY,
-    process.env.PRIVATE_API_KEY
+    PUBLIC_API_KEY,
+    PRIVATE_API_KEY
   );
   const positions = await client.getPositions(true);
   const bolsonaroPosition = positions.result.find((position) => {

@@ -112,6 +112,6 @@ export interface Ifinance {
 }
 
 export interface Iftx {
-  sucess: boolean
+  sucess: boolean;
   result: ICrypto;
 }
